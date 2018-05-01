@@ -1,0 +1,4 @@
+patient1-from-userm 1 300 251
+patient1-from-userm.mat 16+192 1000/mV 16 0 1 34 8 col 1
+#Creator: wfdb2mat
+#Source: record raw/patient1-from-user
