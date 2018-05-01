@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/ubuntu/coding/cnn/DeepECG/dirichlet_model/model-26000"
+all_model_checkpoint_paths: "/home/ubuntu/coding/cnn/DeepECG/dirichlet_model/model-26000"
