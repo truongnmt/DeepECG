@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "Usage: $(basename $0) file"
+	exit 1
+fi
+
+file=$1
+
+rdsamp -r raw/${file} -c -H -f 0 -t 1 -pd > csv/${file}.csv
+gnuplot -e "fileIn='csv/${file}.csv'; fileOut='uploads/${file}.png'" csv2img.gnuplot
