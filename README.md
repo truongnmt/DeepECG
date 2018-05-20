@@ -10,49 +10,57 @@ The following dependencies are required.
 * [Keras](https://keras.io/)
 * [Cardio Framework](https://github.com/analysiscenter/cardio)
 
-## Usage [WIP]
+## Usage
 I have already ran training for you. You can use the saved model in `dirichlet_model` folder to predict right away.
 But make sure to change the path in `direchlet_model/checkpoint` according to your path.
 
-If you want to train again by yourself, run this following notebook file: `dirichlet_model_training.ipynb`, download the dataset and start training. Notice that on 1000 epochs, the training will take some time. Mine took about 8-9 hours on Tesla K80.
+If you want to train again by yourself, run this following notebook file: [dirichlet_model_training.ipynb](https://github.com/truongnmt/DeepECG/blob/master/dirichlet_model_training.ipynb), download the [dataset](https://physionet.org/challenge/2017/) and start training. Notice that on 1000 epochs, the training will take some time. Mine took about 8-9 hours on Tesla K80.
 
 For the project I'm working on, I create some shell file and python files to convert and predict stuffs.
 
 * To predict whether an image is AF (Atrial Fibrillation) or not:
-```
+```shell
 predict <image file path>
 ```
-See more in `test.ipynb` for more test case and example.
+It will return something like this
+```js
+[{'target_pred': {'A': 0.021675685, 'NO': 0.9783243},
+  'uncertainty': 0.0073926448822021484}]
+```
+Which `A` is – Atrial fibrillation
+`N` – Normal rhythm, `O` – Other rhythm, so `NO` is no problem.
+
+See more in [test.ipynb](https://github.com/truongnmt/DeepECG/blob/master/test.ipynb) for more test case and example.
 
 * To generate image from csv:
-```
-./gnuplot -e "fileIn='<input csv>'; fileOut='<output image>'" csv2img.gnuplot
-Eg: gnuplot -e "fileIn='csv/04015.csv'; fileOut='uploads/04015.png'" csv2img.gnuplot
+```shell
+gnuplot -e "fileIn='csv/04015.csv'; fileOut='uploads/04015.png'" csv2img.gnuplot
 ```
 
 * To convert single file to csv and image:
-```
+```shell
 ./raw2img <filename without extension>
-Eg: ./raw2img 04015
 ```
 
 * To convert image to csv:
-```
+```shell
 python img2csv.py '<full path to file>'
-Eg: python img2csv.py '/Users/truongnm/Downloads/data/uploads/04015.png'
 ```
 
 * To convert MAT to csv:
-```
+```shell
 python mat2csv.py "raw/A00001.mat"
 ```
 
 * To convert csv to signal, with Gain equal 1000, Frequency 300Hz. Notice that you can specify `-f` mean from which line (remove if from beginning of file) and also `-t` mean to which line.
-```
+```shell
 wrsamp -i raw/A00001.csv -o raw/A00001-converted -G 1000 -F 300 -z
 ```
 
 * To convert signal back to MAT:
-```
+```shell
 wfdb2mat -r raw/A00001-converted
 ```
+
+## License
+This project is licensed under the terms of the **MIT** license.
