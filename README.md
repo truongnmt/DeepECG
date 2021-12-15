@@ -10,6 +10,15 @@ The following dependencies are required.
 * [Keras](https://keras.io/)
 * [Cardio Framework](https://github.com/analysiscenter/cardio)
 
+
+## Demo
+Demo from the frontend: [Diagnose Report ](https://github.com/truongnmt/diagnose-report) app.
+
+|Sign Up|Dashboard|Report detail| Create report|
+|-|-|-|-|
+|![](https://github.com/truongnmt/diagnose-report/blob/master/screenshots/signup.png)|<img src="https://github.com/truongnmt/diagnose-report/blob/master/screenshots/dashboard.png" width="850" />|![](https://github.com/truongnmt/diagnose-report/blob/master/screenshots/report_detail.png)|![](https://github.com/truongnmt/diagnose-report/blob/master/screenshots/create_report.png)|
+
+
 ## Usage
 I have already ran training for you. You can use the saved model in `dirichlet_model` folder to predict right away.
 But make sure to change the path in `direchlet_model/checkpoint` according to your path.
